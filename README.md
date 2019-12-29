@@ -1,5 +1,12 @@
-Etch-A-Sketch
+Calculator
 
-This project is create a virtual form of an Etch-A-Sketch with HTML, CSS, & Javascript.
+This is a typical calculator created with HTML, CSS & JavaScript.
 
-Using arrow functions intead of normal function calls as practice.
+This caclculator contains functions for all the basic math operators found on a simple calculator.
+ -Add
+ -Subtract
+ -Multiply
+ -Divide
+
+
+ 
