@@ -5,22 +5,22 @@ class Calculator {
       this.clear();
     };
 
-    clear = () => {
+    clear() {
       this.currentInput = ''
       this.previousInput = ''
       this.operation = undefined
     };
   
-    deleted = () => {
+    deleted(){
       this.currentInput = this.currentInput.toString().slice(0, -1)
     };
   
-    addNumber = (number) => {
+    addNumber(number) {
       if (number === '.' && this.currentInput.includes('.')) return
       this.currentInput = this.currentInput.toString() + number.toString()
     };
   
-    chooseOperation = (operation) => {
+    chooseOperation(operation) {
       if (this.currentInput === '') return
       if (this.previousInput !== '') {
         this.compute()
@@ -30,7 +30,7 @@ class Calculator {
       this.currentInput = ''
     };
   
-    compute = () => {
+    compute() {
       let computation
       const prev = parseFloat(this.previousInput)
       const current = parseFloat(this.currentInput)
@@ -56,7 +56,7 @@ class Calculator {
       this.previousInput = ''
     };
   
-    getScreenNumber = (number) => {
+    getScreenNumber(number) {
       const stringNumber = number.toString()
       const integerDigits = parseFloat(stringNumber.split('.')[0])
       const decimalDigits = stringNumber.split('.')[1]
@@ -73,7 +73,7 @@ class Calculator {
       };
     };
   
-    updateScreen = () => {
+    updateScreen() {
       this.currentInputText.innerText =
         this.getScreenNumber(this.currentInput)
       if (this.operation != null) {
@@ -98,34 +98,34 @@ class Calculator {
  
 
 
-  acButton.addEventListener('click', button => {
-    clear();
-    updateScreen();
-  });
-
-
   numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-      addNumber(button.innerText);
-      updateScreen();
+      calculator.addNumber(button.innerText);
+      calculator.updateScreen();
     });
   });
+
+  acButton.addEventListener('click', button => {
+    calculator.clear();
+    calculator.updateScreen();
+  });
+
   
   operationsButtons.forEach(button => {
     button.addEventListener('click', () => {
-      chooseOperation(button.innerText);
-      updateScreen();
+    calculator.chooseOperation(button.innerText);
+    calculator.updateScreen();
     });
   });
   
   equalButton.addEventListener('click', button => {
-    compute();
-    updateScreen();
+    calculator.compute();
+    calculator.updateScreen();
   });
 
   deleteButton.addEventListener('click', button => {
-    deleted();
-    updateScreen();
+    calculator.deleted();
+    calculator.updateScreen();
   });
 
-  Calculator();
+  
